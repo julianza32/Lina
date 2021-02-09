@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lina 🧡</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body class="body" onload="typeWriter();">
+    <div class="contenedor1">
+        <h4 id="texto">
+
+        </h4>
+    </div>
+    <div class="contenedor2">
+        <button class="btno btn-si" onclick="sip()">Si</button>
+        <button class="btno btn-no" onclick="nop()" id="btn-no" onmouseover="cambiarUbicacion()">No</button>
+    </div>
+</body>
+
+<script>
+    var i = 0;
+    var txt = '¿Quieres ser mi novia? 🧡';
+    var speed = 50;
+    var ancho = screen.width;
+    var alto = screen.height;
+
+    function typeWriter() {
+        if (i < txt.length) {
+            document.getElementById("texto").innerHTML += txt.charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
+
+
+        }
+    }
+    function cambiarUbicacion() {
+        document.getElementById("btn-no").style.position = "absolute";
+        var altoF = getRandomArbitraryAlto(alto);
+        var anchoF = getRandomArbitraryAlto(ancho);
+
+        console.log(altoF);
+        document.getElementById("btn-no").style.top = altoF + 'px';
+        document.getElementById("btn-no").style.left = anchoF + 'px';
+    }
+
+
+    function getRandomArbitraryAncho(max) {
+        let variableAux = Math.random() * (10);
+        return Math.random() * (max - 200 + variableAux);
+    }
+
+    function getRandomArbitraryAlto(max) {
+        let variableAux = Math.random() * (10);
+        return Math.random() * (max - 200 + variableAux);
+    }
+    function nop() {
+        Swal.fire({
+            title: 'Lo pudiste oprimir!',
+            text: 'Veo que no quieres ser mi novia',
+            icon: 'error',
+            confirmButtonText: ':('
+        })
+    }
+    function sip() {
+        Swal.fire({
+            title: 'Sweet!',
+            text: 'Gracias hermosa, por esta linda oportunidad .',
+            imageUrl: './imagenes/oso.gif',
+            imageWidth: 300,
+            imageHeight: 200,
+            imageAlt: 'aqui deberia salir una imagen',
+        })
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+</html>
